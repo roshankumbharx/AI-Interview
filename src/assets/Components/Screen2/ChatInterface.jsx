@@ -10,8 +10,8 @@ const ChatInterface = forwardRef(({ domain, resumeText, onMessageCountUpdate }, 
   const messagesContainerRef = useRef(null);
   const recognitionRef = useRef(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const API_KEY = "AIzaSyCWi01R96VbH-fcI9nY7WTgNpp9xlZ3BG4";
-  const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+  const API_KEY = "api_key";
+  const API_URL = "api_url";
 
   useImperativeHandle(ref, () => ({
     evaluatePerformance
