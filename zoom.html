@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Zoom Meeting</title>
+    <script src="https://source.zoom.us/2.14.0/lib/vendor/react.min.js"></script>
+    <script src="https://source.zoom.us/2.14.0/lib/vendor/react-dom.min.js"></script>
+    <script src="https://source.zoom.us/2.14.0/lib/vendor/redux.min.js"></script>
+    <script src="https://source.zoom.us/2.14.0/lib/vendor/redux-thunk.min.js"></script>
+    <script src="https://source.zoom.us/2.14.0/zoom-meeting-2.14.0.min.js"></script>
+</head>
+<body>
+    <div id="zmmtg-root"></div>
+    <script>
+        ZoomMtg.setZoomJSLib('https://source.zoom.us/2.14.0/lib', '/av');
+        ZoomMtg.preLoadWasm();
+        ZoomMtg.prepareJssdk();
+
+        async function startMeeting() {
+            const response = await fetch("https://your-backend.com/get_signature"); // API to generate a signature
+            const { signature, meetingNumber, sdkKey } = await response.json();
+
+            ZoomMtg.init({
+                leaveUrl: "https://your-app.com",
+                success: function() {
+                    ZoomMtg.join({
+                        meetingNumber: meetingNumber,
+                        userName: "Guest",
+                        signature: signature,
+                        sdkKey: sdkKey,
+                        userEmail: "",
+                        passWord: "",
+                        success: function() {
+                            console.log("Joined Meeting!");
+                        },
+                        error: function(err) {
+                            console.error(err);
+                        }
+                    });
+                },
+                error: function(err) {
+                    console.error(err);
+                }
+            });
+        }
+
+        startMeeting();
+    </script>
+</body>
+</html>
