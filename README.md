@@ -5,10 +5,6 @@ An AI-powered mock interview platform that simulates real interview experiences 
 ---
 
 
-**Demo Link**
-- https://drive.google.com/file/d/1DEkPCG8eLfXUbccK6UE0exReuhZ9w1B9/view?usp=sharing
-
-
 ## 🚀 Features
 
 ### 👨‍💼 AI Interviewer
